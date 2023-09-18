@@ -72,7 +72,7 @@ export default defineComponent({
     };
     // 登录
     const ruleFormRef = ref<FormInstance>();
-    const router=useRouter()//-->$router
+    const router=useRouter();//-->$router
     const submitForm = (formEl: FormInstance | undefined) => {
       if (!formEl) return;
       // 对表单的内容进行验证
@@ -85,8 +85,11 @@ export default defineComponent({
             // 将token进行保存
             localStorage.setItem("token", res.data.token);
             // 跳转页面，首页
-            router.push('/')
-          });
+            router.push("/");
+          })
+          .catch((err)=>{
+            console.log(err);
+         });
         } else {
           console.log("error submit!");
           return false;
