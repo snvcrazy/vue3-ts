@@ -1,32 +1,16 @@
 <template>
   <div class="login-box">
-    <el-form
-      ref="ruleFormRef"
-      :model="ruleForm"
-      status-icon
-      :rules="rules"
-      label-width="80px"
-      class="demo-ruleForm"
-    >
+    <el-form ref="ruleFormRef" :model="ruleForm" status-icon :rules="rules" label-width="80px" class="demo-ruleForm">
       <h2>后台管理系统</h2>
       <el-form-item label="账号：" prop="username">
         <el-input v-model="ruleForm.username" autocomplete="off" />
       </el-form-item>
 
       <el-form-item label="密码：" prop="password">
-        <el-input
-          v-model="ruleForm.password"
-          type="password"
-          autocomplete="off"
-        />
+        <el-input v-model="ruleForm.password" type="password" autocomplete="off" />
       </el-form-item>
       <el-form-item>
-        <el-button
-          class="loginBtn"
-          type="primary"
-          @click="submitForm(ruleFormRef)"
-          >登录</el-button
-        >
+        <el-button class="loginBtn" type="primary" @click="submitForm(ruleFormRef)">登录</el-button>
         <el-button class="loginBtn" @click="resetForm">重置</el-button>
       </el-form-item>
     </el-form>
@@ -72,7 +56,7 @@ export default defineComponent({
     };
     // 登录
     const ruleFormRef = ref<FormInstance>();
-    const router=useRouter();//-->$router
+    const router = useRouter();//-->$router
     const submitForm = (formEl: FormInstance | undefined) => {
       if (!formEl) return;
       // 对表单的内容进行验证
@@ -85,11 +69,11 @@ export default defineComponent({
             // 将token进行保存
             localStorage.setItem("token", res.data.token);
             // 跳转页面，首页
-            router.push("/");
+            router.push('/');
           })
-          .catch((err)=>{
-            console.log(err);
-         });
+            .catch((err) => {
+              console.log(err);
+            });
         } else {
           console.log("error submit!");
           return false;
@@ -114,6 +98,7 @@ export default defineComponent({
   background: url("../assets/bg.jpg");
   padding: 1px;
   text-align: center;
+
   .demo-ruleForm {
     width: 500px;
     margin: 200px auto;
@@ -121,9 +106,11 @@ export default defineComponent({
     padding: 40px;
     border-radius: 20px;
   }
+
   .loginBtn {
     width: 48%;
   }
+
   h2 {
     margin-bottom: 10px;
   }
