@@ -19,5 +19,5 @@ export class InitData{
         count:0,
         pagesize:10
     }
-    list:ListInt[]=[] //展示的内容数据
+    list:ListInt[]=[] //展示的内容数据,接收后台返回的数据
 }
